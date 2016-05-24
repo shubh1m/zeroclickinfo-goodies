@@ -3,29 +3,22 @@ DDH.lowercase = DDH.lowercase || {};
 (function(DDH) {
     "use strict";
 
-	// var bail = DDH.failed;
-	//
-	// DDH.failed = function (id) {
-	// 	console.log("IA FAILED: " + id);
-	// 	bail(id);
-	// }
-
-	console.log("DDH.lowercase.build");
+    console.log("DDH.lowercase.build");
 
 
-	DDH.lowercase.build = function(ops) {
+    DDH.lowercase.build = function(ops) {
 
-		var lower = ops.data.input.toLowerCase();
+        var lower = ops.data.input.toLowerCase();
 
-		console.log(lower);
+        console.log(lower);
 
-		if (lower == ops.data.input) {
-			console.log("NOTHING TO LOWERCASE");
-			ops.data = null;
-			return DDH.failed('LowercaseJs');
-		}
+        if (lower == ops.data.input) {
+            console.log("NOTHING TO LOWERCASE");
+            ops.data = null;
+            return DDH.failed('LowercaseJs');
+        }
 
-		console.log(ops);
+        console.log(ops);
 
         return {
 
@@ -35,8 +28,8 @@ DDH.lowercase = DDH.lowercase || {};
             },
 
             data: {
-				title: ops.data.input.toLowerCase(),
-				subtitle: "Lowercase: "  + ops.data.input
+                title: ops.data.input.toLowerCase(),
+                subtitle: "Lowercase: "  + ops.data.input
             },
 
             templates: {
