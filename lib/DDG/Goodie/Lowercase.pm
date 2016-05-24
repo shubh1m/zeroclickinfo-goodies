@@ -14,14 +14,14 @@ handle remainder => sub {
 
     return unless $input;
 
-    my $lower = lc $input;
+    # my $lower = lc $input;
 
-    return if ($lower eq $input);
+    # return if ($lower eq $input);
 
-    return $lower, structured_answer => {
+    return "plain text",
+	structured_answer => {
         data => {
-            title => html_enc($lower),
-            subtitle => "Lowercase: " . html_enc($input)
+            input => $input,
         },
         templates => {
             group => 'text',
