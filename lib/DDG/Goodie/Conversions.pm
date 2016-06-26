@@ -39,7 +39,7 @@ my $question_prefix = qr/(?<prefix>convert|what (?:is|are|does)|how (?:much|many
 
 # guards and matches regex
 my $factor_re = join('|', ('a', 'an', number_style_regex()));
-my $guard = qr/^(?<question>$question_prefix)\s?(?<left_num>$factor_re*)\s?(?<left_unit>$keys)\s(?<connecting_word>in|to|into|(?:in to)|from)?\s?(?<right_num>$factor_re*)\s?(?:of\s)?(?<right_unit>$keys)[\?]?$/i;
+my $guard = qr/^(?<question>$question_prefix)\s?(?<left_set>((?<left_num>$factor_re*)\s?(?<left_unit>$keys)\s)+?)\s?(?<connecting_word>in|to|into|(?:in to)|from)?\s?(?<right_num>$factor_re*)\s?(?:of\s)?(?<right_unit>$keys)[\?]?$/i;
 
 # fix precision and rounding:
 my $precision = 3;
@@ -67,6 +67,9 @@ handle query_lc => sub {
     
     # guard the query from spurious matches
     return unless $_ =~ /$guard/;
+    #use Data::Dump qw(dump);
+    #print STDERR dump($+{'left_set'});
+    #die;
     
     my @matches = ($+{'left_unit'}, $+{'right_unit'});
     return if ("" ne $+{'left_num'} && "" ne $+{'right_num'});
