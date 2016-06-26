@@ -2828,7 +2828,44 @@ ddg_goodie_test(
             physical_quantity => 'volume'
         })
     ),
-    
+
+    #Common imperial mixed units
+    q`6'3" in metres` => test_zci(
+        "6.25 feet = 1.905 meters", 
+        structured_answer => make_answer({
+            markup_input => "6.25",
+            raw_input => "6.25",
+            from_unit => "feet",
+            styled_output => "1.905",
+            raw_answer => "1.905",
+            to_unit => "meters",
+            physical_quantity => 'length'
+        })
+    ),
+    "6feet3inches in metres" => test_zci(
+        "6.25 feet = 1.905 meters", 
+        structured_answer => make_answer({
+            markup_input => "6.25",
+            raw_input => "6.25",
+            from_unit => "feet",
+            styled_output => "1.905",
+            raw_answer => "1.905",
+            to_unit => "meters",
+            physical_quantity => 'length'
+        })
+    ),
+    "6 feet 3 inches in metres" => test_zci(
+        "6.25 feet = 1.905 meters", 
+        structured_answer => make_answer({
+            markup_input => "6.25",
+            raw_input => "6.25",
+            from_unit => "feet",
+            styled_output => "1.905",
+            raw_answer => "1.905",
+            to_unit => "meters",
+            physical_quantity => 'length'
+        })
+    ),
 
     # Intentionally untriggered
     '5 inches in 5 meters'            => undef,
